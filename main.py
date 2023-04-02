@@ -16,6 +16,9 @@ def start_game():
 	screen = pygame.display.set_mode((settings.WIDTH, settings.HEIGHT))
 	clock = pygame.time.Clock()
 	
+	pygame.event.set_grab(True)
+	pygame.mouse.set_visible(False)
+	
 	wave.restart()
 	
 	running = True
@@ -23,7 +26,7 @@ def start_game():
 
 	while running:
 		for event in pygame.event.get():
-			if event.type == pygame.QUIT:
+			if event.type == pygame.QUIT or (event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE):
 				running = False
 
 		has_focus = pygame.mouse.get_focused()
